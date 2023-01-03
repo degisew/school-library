@@ -1,9 +1,9 @@
 class Person
-  def initialize(name = 'unknown', age, parent_permision: true)
+  def initialize(age, name = 'unknown', parent_permision: true)
     @id = Random.rand(1..10)
     @name = name
     @age = age
-    @parent_permission = parent_permission
+    @parent_permission = parent_permision
   end
 
   def can_use_services?
