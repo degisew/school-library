@@ -29,11 +29,10 @@
 **[school-library]** is a console application built with Ruby that used to manage a school library. It allows to record what books are in the library and who borrows them.
 
 
-
 ## 🛠 Built With <a name="built-with"></a>
 
 - Ruby
-- Linters
+-Rubocop Linters
 
 ### Tech Stack <a name="tech-stack"></a>
 
