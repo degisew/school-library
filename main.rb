@@ -35,7 +35,6 @@ def main
       puts 'Thank you For using this app!'
       exit
     end
-end
   def create_person(app)
   print 'Do you want to create a studnet (1) or a teacher (2)? [Input the number] '
   option = gets.chomp()
@@ -45,4 +44,5 @@ end
   when '2'
     app.create_teacher
   end
+end
 main
