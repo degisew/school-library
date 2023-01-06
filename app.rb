@@ -12,26 +12,28 @@ class App
   end
 
   def list_of_all_books
-     if @books.empty?
- puts 'You have no recorded books yet!'
-     else
-    @books.each do |book|
-      puts "Title: \"#{book.title}\", Author: #{book.author}"
+    if @books.empty?
+      puts 'You have no recorded books yet!'
+    else
+      @books.each do |book|
+        puts "Title: \"#{book.title}\", Author: #{book.author}"
+      end
+      puts
     end
-    puts
   end
-end
+
   def list_of_all_people
-   if @persons.empty? 
-    puts 'You have no recorded people yet!' 
-   else
-    @persons.each do |person|
-      category = person.is_a?(Student) ? '[Student]' : '[Teacher]'
-      puts "#{category} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    if @persons.empty?
+      puts 'You have no recorded people yet!'
+    else
+      @persons.each do |person|
+        category = person.is_a?(Student) ? '[Student]' : '[Teacher]'
+        puts "#{category} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      end
+      puts
     end
-    puts
   end
-end
+
   def create_book
     print 'Enter Book Title: '
     title = gets.chomp
@@ -72,9 +74,9 @@ end
 
   def create_rental()
     if @books.empty?
-      puts 'Sorry, there are no books!'
+      puts 'Sorry there are no books!'
     elsif @persons.empty?
-      puts 'Sorry, no one is registered yet!'
+      puts 'Sorry there are no person!'
     else
       book = book_rental
       person = person_rental
@@ -84,21 +86,23 @@ end
       @rentals << rental
       puts 'Rental created successfully'
       puts
+    end
   end
-end
+
   def person_rental(msg = '')
     puts "#{msg} "
     puts 'Select a person from the following list by number'
     @persons.each_with_index do |person, index|
-      category = person.is_a?(Student) ? '[Student]' : '[Teacher]'
-      puts "#{index}) #{category} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      title = person.is_a?(Student) ? '[Student]' : '[Teacher]'
+      puts "#{index}) #{title} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_option = gets.chomp.to_i
     if person_option >= @books.size || person_option.negative?
       person_rental("Please select from 0 to #{@persons.size - 1}")
+    end
     @persons[person_option]
   end
-end
+
   def book_rental(msg = '')
     puts "#{msg} "
     puts 'Select a books from the following list by number'
@@ -109,7 +113,7 @@ end
     book_rental("Please select from 0 to #{@persons.size - 1}") if book_option >= @books.size || book_option.negative?
     @books[book_option]
   end
-end
+
   def list_of_all_rentals
     print 'ID of person: '
     id = gets.chomp.to_i
@@ -119,7 +123,6 @@ end
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.person.name}" if rental.person.id.eql? id
     end
+    puts
   end
-end
-end
 end
