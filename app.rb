@@ -96,7 +96,6 @@ puts 'You have no recorded books yet!'
     person_option = gets.chomp().to_i
     if person_option >= @books.size || person_option.negative?
       person_rental("Please select from 0 to #{@persons.size - 1}")
-    end
     @persons[person_option]
   end
 
@@ -119,4 +118,5 @@ puts 'You have no recorded books yet!'
     puts
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.person.name}" if rental.person.id.eql? id
+end
 end
