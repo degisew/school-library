@@ -10,8 +10,6 @@ class Student < Person
     @classroom = classroom
   classroom.students.push(self) unless classroom.students.include?(self)
     end
-    
-  end
   end
   def play_hooky
     '¯\(ツ)/'
