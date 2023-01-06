@@ -22,7 +22,7 @@ puts 'You have no recorded books yet!'
   end
 
   def list_of_all_people
-    @persons.empty? puts 'You have no recorded people yet!' : @persons.each do |person|
+    @persons.empty?(true) puts 'You have no recorded people yet!' : @persons.each do |person|
       category = person.is_a?(Student) ? '[Student]' : '[Teacher]'
       puts "#{category} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
@@ -117,7 +117,5 @@ puts 'You have no recorded books yet!'
     puts
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.person.name}" if rental.person.id.eql? id
-    end
-    puts
   end
 end
