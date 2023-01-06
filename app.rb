@@ -118,3 +118,6 @@ puts 'You have no recorded books yet!'
     puts
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.person.name}" if rental.person.id.eql? id
+    end
+  end
+end
