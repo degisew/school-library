@@ -12,30 +12,30 @@ def menu
   puts '7) Exit'
 end
 
-# def main
-#   app = App.new
-#   loop do
-#     puts
-#     menu
-#     option = gets.chomp.to_i
-#     case option
-#     when 1
-#       app.list_of_all_books
-#     when 2
-#       app.list_of_all_people
-#     when 3
-#       app.create_person
-#     when 4
-#       app.create_book
-#     when 5
-#       app.create_rental
-#     when 6
-#       app.list_of_all_rentals
-#     when 7
-#       puts 'Thank you For using this app!'
-#       exit
-#     end
-#   end
-# end
+def main
+  print "welcome!"
+  app = App.new
+  loop do
+    puts menu
+    option = gets.chomp.to_i
+    case option
+    when 1
+      app.list_of_all_books
+    when 2
+      app.list_of_all_people
+    when 3
+      app.create_person
+    when 4
+      app.create_book
+    when 5
+      app.create_rental
+    when 6
+      app.list_of_all_rentals
+    when 7
+      puts 'Thank you For using this app!'
+      exit
+    end
+  end
+end
 
-# main
+main
