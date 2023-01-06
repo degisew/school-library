@@ -17,7 +17,7 @@ def main
   loop do
     puts
     menu
-    option = gets.chomp().to_i
+    option = gets.chomp.to_i
     case option
     when 1
       app.list_of_all_books
@@ -40,7 +40,7 @@ end
 
 def create_person(app)
   print 'Do you want to create a studnet (1) or a teacher (2)? [Input the number] '
-  option = gets.chomp()
+  option = gets.chomp
   case option
   when '1'
     app.create_student
