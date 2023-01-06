@@ -45,5 +45,4 @@ end
   when '2'
     app.create_teacher
   end
-end
 main
