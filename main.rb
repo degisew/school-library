@@ -36,6 +36,7 @@ def main
       exit
     end
  end
+ 
   def create_person(app)
   print 'Do you want to create a studnet (1) or a teacher (2)? [Input the number] '
   option = gets.chomp()
@@ -45,4 +46,5 @@ def main
   when '2'
     app.create_teacher
   end
-main
+end
+main()
