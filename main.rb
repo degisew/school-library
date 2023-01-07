@@ -37,7 +37,6 @@ def options(option, app)
   when 6
     app.list_of_all_rentals
   when 7
-    puts 'Thank you For using this app!'
     exit
   end
 end
