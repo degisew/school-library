@@ -18,7 +18,7 @@ def main
   loop do
     puts menu
     option = gets.chomp.to_i
-    options(option, app)
+    menu_executer(option, app)
   end
 end
 
@@ -36,8 +36,16 @@ def options(option, app)
     app.create_rental
   when 6
     app.list_of_all_rentals
-  when 7
+  end
+end
+
+def menu_executer(option, app)
+  if option == 7
+    puts 'Thank you for using this app!'
     exit
+  else
+    options(option, app)
+
   end
 end
 
