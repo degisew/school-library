@@ -47,13 +47,13 @@ class App
 
   def create_student
     print 'Enter Age: '
-    age = gets.chomp
+    age = gets.chomp.to_i
     print 'Enter Name: '
     name = gets.chomp
     print 'Has parent permission? [Y/N]:'
-    permission = gets.chomp
+    permision = gets.chomp
     room = ClassRoom.new('A')
-    student = Student.new(room, age, name, parent_permission: permission)
+    student = Student.new(room, age, name, parent_permision: permision)
     # push new book to the end of the array
     @persons << student
     puts 'Registration success!'
@@ -61,7 +61,7 @@ class App
 
   def create_teacher
     print 'Enter Age: '
-    age = gets.chomp
+    age = gets.chomp.to_i
     print 'Enter Name: '
     name = gets.chomp
     print 'Enter Specialization: '
