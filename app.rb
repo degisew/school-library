@@ -52,7 +52,7 @@ class App
     name = gets.chomp
     print 'Has parent permission? [Y/N]:'
     permission = gets.chomp
-    room = Classroom.new('A')
+    room = ClassRoom.new('A')
     student = Student.new(room, age, name, parent_permission: permission)
     # push new book to the end of the array
     @persons << student
