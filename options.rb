@@ -8,6 +8,7 @@ class Option
     when 3
       create_person(app)
     when 4
+      puts app.create_book
     when 5
       app.create_rental
     when 6

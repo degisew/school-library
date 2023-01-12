@@ -3,9 +3,9 @@ require_relative './menu'
 require_relative './menu_executer'
 
 def main
-  menu = Menu.new()
-  app = App.new()
-  executer = MenuExecuter.new()
+  menu = Menu.new
+  app = App.new
+  executer = MenuExecuter.new
   loop do
     puts menu.menu_list
     option = gets.chomp.to_i
