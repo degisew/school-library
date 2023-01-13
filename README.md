@@ -101,6 +101,13 @@ To run the project, add a parameter to decoding-message function, separating eac
 - Twitter: [@DJ_etiya](https://twitter.com/@DJ_etiya)
 - LinkedIn: [jegisew21](https://www.linkedin.com/in/degisew-mengist)
 
+👤 **Suleiman Olaade**
+
+- Location: Nigeria
+- GitHub: [@Ceemos96](https://github.com/Ceemos96)
+- Twitter: [@Ceemos_dev](https://twitter.com/Ceemos_dev)
+- LinkedIn: [suleiman-olaide](https://www.linkedin.com/in/suleiman-olaide)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
