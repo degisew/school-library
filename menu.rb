@@ -1,6 +1,8 @@
 class Menu
   def menu_list
-    puts 'Welcome to School Library app'
+    puts
+    puts 'Welcome to School Library app!'
+    puts
     puts 'Select an option by entering a number: '
     puts '1) List all books'
     puts '2) List all people'
