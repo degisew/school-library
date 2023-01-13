@@ -3,12 +3,17 @@ require_relative './student'
 require_relative './classroom'
 require_relative './teacher'
 require_relative './rental'
+require_relative './file'
+require 'json'
 
 class App
+  include BookData
+  include PeopleData
+  include RentalData
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = read_book
+    @persons = read_people
+    @rentals = read_rental
   end
 
   def list_of_all_books
@@ -43,6 +48,7 @@ class App
     # push new book to the end of the array
     @books << book
     puts 'Book is registered!'
+    #write_book(@books)
   end
 
   def create_student
@@ -57,6 +63,7 @@ class App
     # push new book to the end of the array
     @persons << student
     puts 'Registration success!'
+    #write_people(@persons)
   end
 
   def create_teacher
@@ -70,6 +77,7 @@ class App
     # push new book to the end of the array
     @persons << teacher
     puts 'Registration success!'
+    #write_people(@persons)
   end
 
   def create_rental()
@@ -86,6 +94,7 @@ class App
       @rentals << rental
       puts 'Rental created successfully'
       puts
+    #  write_rental(@rentals)
     end
   end
 
