@@ -1,6 +1,6 @@
 require_relative '../solver'
 describe Solver do
-  context 'When passed an input' do
+  context 'When the input is passed' do
     solver = Solver.new
     it 'Expect hello to be reversed to olleh' do
       expect(solver.reverse('hello')).to eq 'olleh'
