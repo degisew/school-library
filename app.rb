@@ -3,12 +3,17 @@ require_relative './student'
 require_relative './classroom'
 require_relative './teacher'
 require_relative './rental'
+require_relative './file'
+require 'json'
 
 class App
+  include BookData
+  include PeopleData
+  include RentalData
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = read_book
+    @persons = read_people
+    @rentals = read_rental
   end
 
   def list_of_all_books
@@ -16,7 +21,7 @@ class App
       puts 'You have no recorded books yet!'
     else
       @books.each do |book|
-        puts "Title: \"#{book.title}\", Author: #{book.author}"
+        puts "Title: \"#{book['title']}\", Author: #{book['author']}"
       end
       puts
     end
@@ -26,9 +31,9 @@ class App
     if @persons.empty?
       puts 'You have no recorded people yet!'
     else
-      @persons.each do |person|
-        category = person.is_a?(Student) ? '[Student]' : '[Teacher]'
-        puts "#{category} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts
+      @persons.each_with_index do |person, _index|
+        puts "Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
       end
       puts
     end
@@ -41,8 +46,12 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     # push new book to the end of the array
-    @books << book
+    @books << {
+      title: book.title,
+      author: book.author
+    }
     puts 'Book is registered!'
+    write_book(@books)
   end
 
   def create_student
@@ -55,8 +64,13 @@ class App
     room = ClassRoom.new('A')
     student = Student.new(room, age, name, parent_permision: permision)
     # push new book to the end of the array
-    @persons << student
+    @persons << {
+      name: student.name,
+      age: student.age,
+      id: student.id
+    }
     puts 'Registration success!'
+    write_people(@persons)
   end
 
   def create_teacher
@@ -68,11 +82,16 @@ class App
     special = gets.chomp
     teacher = Teacher.new(special, age, name)
     # push new book to the end of the array
-    @persons << teacher
+    @persons << {
+      name: teacher.name,
+      age: teacher.age,
+      id: teacher.id
+    }
     puts 'Registration success!'
+    write_people(@persons)
   end
 
-  def create_rental()
+  def create_rental
     if @books.empty?
       puts 'Sorry there are no books!'
     elsif @persons.empty?
@@ -83,9 +102,14 @@ class App
       print 'Date: '
       date = gets.chomp
       rental = Rental.new(date, person, book)
-      @rentals << rental
+      @rentals << {
+        date: rental.date, person_id: rental.person['id'],
+        person_name: rental.person['name'], title: rental.book['title'],
+        author: rental.book['author']
+      }
       puts 'Rental created successfully'
       puts
+      write_rental(@rentals)
     end
   end
 
@@ -94,7 +118,7 @@ class App
     puts 'Select a person from the following list by number'
     @persons.each_with_index do |person, index|
       title = person.is_a?(Student) ? '[Student]' : '[Teacher]'
-      puts "#{index}) #{title} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "#{index}) #{title} Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
     end
     person_option = gets.chomp.to_i
     if person_option >= @books.size || person_option.negative?
@@ -107,7 +131,7 @@ class App
     puts "#{msg} "
     puts 'Select a books from the following list by number'
     @books.each_with_index do |book, index|
-      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
+      puts "#{index}) Title: \"#{book['title']}\", Author: #{book['author']}"
     end
     book_option = gets.chomp.to_i
     book_rental("Please select from 0 to #{@persons.size - 1}") if book_option >= @books.size || book_option.negative?
@@ -115,14 +139,19 @@ class App
   end
 
   def list_of_all_rentals
-    print 'ID of person: '
+    print 'Enter Person ID: '
     id = gets.chomp.to_i
-    print 'No ' if @rentals.empty?
-    print 'Rentals: '
-    puts
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.person.name}" if rental.person.id.eql? id
+    if @rentals.empty?
+      puts
+      puts 'No Rentals yet!'
+      puts
+    else
+      @rentals.each do |rental|
+        next unless rental['person_id'] == id
+
+        puts
+        puts "Date: #{rental['date']}, Book \"#{rental['title']}\" by #{rental['person_name']}"
+      end
     end
-    puts
   end
 end
