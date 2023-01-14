@@ -32,7 +32,7 @@ class App
       puts 'You have no recorded people yet!'
     else
       puts
-      @persons.each_with_index do |person, index|
+      @persons.each_with_index do |person|
         puts "Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
       end
       puts
@@ -85,13 +85,13 @@ class App
     @persons << {
       name: teacher.name,
       age: teacher.age,
-      id: teacher.id,
+      id: teacher.id
     }
     puts 'Registration success!'
     write_people(@persons)
   end
 
-  def create_rental()
+  def create_rental
     if @books.empty?
       puts 'Sorry there are no books!'
     elsif @persons.empty?
@@ -108,7 +108,6 @@ class App
         person_name: rental.person['name'],
         title: rental.book['title'],
         author: rental.book['author']
-        # rentals: arr << rental.person.rentals
       }
       puts 'Rental created successfully'
       puts
@@ -146,7 +145,7 @@ class App
     id = gets.chomp.to_i
     if @rentals.empty?
       puts
-      puts "No Rentals yet!"
+      puts 'No Rentals yet!'
       puts
     else
       @rentals.each do |rental|
