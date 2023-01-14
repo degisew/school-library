@@ -32,7 +32,7 @@ class App
       puts 'You have no recorded people yet!'
     else
       puts
-      @persons.each_with_index do |person|
+      @persons.each_with_index do |person, _index|
         puts "Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
       end
       puts
@@ -103,10 +103,8 @@ class App
       date = gets.chomp
       rental = Rental.new(date, person, book)
       @rentals << {
-        date: rental.date,
-        person_id: rental.person['id'],
-        person_name: rental.person['name'],
-        title: rental.book['title'],
+        date: rental.date, person_id: rental.person['id'],
+        person_name: rental.person['name'], title: rental.book['title'],
         author: rental.book['author']
       }
       puts 'Rental created successfully'
