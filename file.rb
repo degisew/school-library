@@ -8,7 +8,7 @@ module BookData
         JSON.parse(all_books)
       end
     else
-      File.open('./files/books_data.json')
+      File.write('./files/books_data.json', [])
     end
   end
 
@@ -25,7 +25,7 @@ module PeopleData
         JSON.parse(all_people)
       end
     else
-      File.open('./files/peoples_data.json')
+      File.write('./files/peoples_data.json', [])
     end
   end
 
@@ -42,7 +42,7 @@ module RentalData
         JSON.parse(all_rentals)
       end
     else
-      File.open('./files/rentals_data.json')
+      File.write('./files/rentals_data.json', [])
     end
   end
 
